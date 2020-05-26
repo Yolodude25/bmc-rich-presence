@@ -107,7 +107,7 @@ python presence.py -t river -m doubleback -d hard
 
 #### Rich Presence
 
-![River - Doubleback (Hard)](river_doubleback_hard.png)
+![River - Doubleback (Hard)](assets/screenshots/river_doubleback_hard.png)
 
 ### Mountain - Sun
 

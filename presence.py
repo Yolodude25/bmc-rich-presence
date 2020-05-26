@@ -1,4 +1,4 @@
-import time, argparse, json, configparser, pprint
+import time, argparse, json, configparser, pprint, random
 from fuzzywuzzy import fuzz
 from fuzzywuzzy import process
 from pypresence import Presence
@@ -27,70 +27,64 @@ def presence_gen():
     # Setup default values
 
     pg_presencedict = {}
-    pg_presencedict["large_image"] = config["Normal"]["large_image"]
-    pg_presencedict["large_text"] = config["Normal"]["large_text"]
-    pg_presencedict["small_image"] = config["Normal"]["small_image"]
-    pg_presencedict["small_text"] = config["Normal"]["small_text"]
-    pg_presencedict["details"] = config["Normal"]["details"]
-    pg_presencedict["state"] = config["Normal"]["state"]
     pg_presencedict["party_size"] = []
     pg_presencedict["start"] = start_time
     pg_formatdict = {}
     pg_formatdict["map_image"] = ""
     pg_formatdict["map_hf"] = ""
     pg_formatdict["difficulty_hf"] = ""
-    pg_formatdict["variation_hf"] = ""
-    pg_formatdict["variation_image"] = ""
     pg_formatdict["icon"] = "icon"
-    pg_coop = coop
+    if terrain:
+        pg_terrain = process.extractOne(terrain, list(assets["terrains"].keys()))[0]
+        pg_formatdict["map_image"] = assets["terrains"][pg_terrain]["maps"][
+            random.choice(list(assets["terrains"][pg_terrain]["maps"].keys()))
+        ]["image"]
+        pg_formatdict["terrain_hf"] = assets["terrains"][pg_terrain]["name_hf"]
     if map:
-        pg_map = process.extractOne(map, list(assets["maps"].keys()))[0]
-        pg_formatdict["map_image"] = assets["maps"][pg_map]["image"]
-        pg_formatdict["map_hf"] = assets["maps"][pg_map]["name_hf"]
+        pg_map = process.extractOne(
+            map, list(assets["terrains"][pg_terrain]["maps"].keys())
+        )[0]
+        pg_formatdict["map_image"] = assets["terrains"][pg_terrain]["maps"][pg_map][
+            "image"
+        ]
+        pg_formatdict["map_hf"] = assets["terrains"][pg_terrain]["maps"][pg_map][
+            "name_hf"
+        ]
     if difficulty:
         pg_difficulty = difficulty
+        pg_formatdict["difficulty_image"] = assets["difficulties"][pg_difficulty][
+            "image"
+        ]
         pg_formatdict["difficulty_hf"] = assets["difficulties"][pg_difficulty][
             "name_hf"
         ]
-        if variation:
-            pg_variation = process.extractOne(
-                variation, list(assets["difficulties"][difficulty]["variations"].keys())
-            )[0]
-            pg_formatdict["variation_hf"] = assets["difficulties"][difficulty][
-                "variations"
-            ][pg_variation]["name_hf"]
-            pg_formatdict["variation_image"] = assets["difficulties"][difficulty][
-                "variations"
-            ][pg_variation]["image"]
-        else:
-            pg_variation = "standard"
-            pg_formatdict["variation_hf"] = assets["difficulties"][difficulty][
-                "variations"
-            ][pg_variation]["name_hf"]
-            pg_formatdict["variation_image"] = assets["difficulties"][difficulty][
-                "variations"
-            ][pg_variation]["image"]
-    if map and difficulty:
-        for pg_field in list(config["Normal"].keys()):
-            pg_presencedict[pg_field] = config["Normal"][pg_field].format(
-                **pg_formatdict
-            )
-    elif map:
-        for pg_field in list(config["No Difficulty"].keys()):
-            pg_presencedict[pg_field] = config["No Difficulty"][pg_field].format(
-                **pg_formatdict
-            )
-    if pg_coop:
-        for pg_field in list(config["Co-Op"].keys()):
-            pg_presencedict[pg_field] = config["Co-Op"][pg_field].format(
-                **pg_formatdict
-            )
-        pg_presencedict["party_size"] = pg_coop
-    if not map:
-        for pg_field in list(config["No Map"].keys()):
-            pg_presencedict[pg_field] = config["No Map"][pg_field].format(
-                **pg_formatdict
-            )
+        pg_formatdict["difficulty_dots"] = assets["difficulties"][pg_difficulty]["dots"]
+
+    if terrain and map and difficulty:
+        for pg_field in list(config["Terrain, Map, Difficulty"].keys()):
+            pg_presencedict[pg_field] = config["Terrain, Map, Difficulty"][
+                pg_field
+            ].format(**pg_formatdict)
+    elif terrain and not map and difficulty:
+        for pg_field in list(config["Terrain, No Map, Difficulty"].keys()):
+            pg_presencedict[pg_field] = config["Terrain, No Map, Difficulty"][
+                pg_field
+            ].format(**pg_formatdict)
+    elif terrain and map and not difficulty:
+        for pg_field in list(config["Terrain, Map, No Difficulty"].keys()):
+            pg_presencedict[pg_field] = config["Terrain, Map, No Difficulty"][
+                pg_field
+            ].format(**pg_formatdict)
+    elif terrain and not map and not difficulty:
+        for pg_field in list(config["Terrain, No Map, No Difficulty"].keys()):
+            pg_presencedict[pg_field] = config["Terrain, No Map, No Difficulty"][
+                pg_field
+            ].format(**pg_formatdict)
+    elif not terrain and not map and not difficulty:
+        for pg_field in list(config["No Terrain, No Map, No Difficulty"].keys()):
+            pg_presencedict[pg_field] = config["No Terrain, No Map, No Difficulty"][
+                pg_field
+            ].format(**pg_formatdict)
         pg_presencedict["start"] = None
     for pg_field in list(pg_presencedict.keys()):
         if pg_presencedict[pg_field] == "" or pg_presencedict[pg_field] == []:
@@ -103,10 +97,9 @@ def presence_gen():
 # Parse the arguments. Note that -m and -v do not have to be exact.
 
 parser = argparse.ArgumentParser()
+parser.add_argument("-t", "--terrain", help="Terrain you are playing on.")
 parser.add_argument("-m", "--map", help="Map you are playing.")
 parser.add_argument("-d", "--difficulty", help="Difficulty you are playing at.")
-parser.add_argument("-v", "--variation", help="Difficulty variation.")
-parser.add_argument("-c", "--coop", help="Number of players in your co-op game.")
 args = parser.parse_args()
 
 # Parse the config file.
@@ -121,17 +114,9 @@ assets = json.load(open("assets.json", "r"))
 
 # If the argument exists, then make it lowercase to normalize.
 
+terrain = lower_if_exists(args.terrain)
 map = lower_if_exists(args.map)
 difficulty = lower_if_exists(args.difficulty)
-variation = lower_if_exists(args.variation)
-if args.coop:
-    coop = [int(args.coop), 4]
-else:
-    coop = args.coop
-if args.coop:
-    coop = [int(args.coop), 4]
-else:
-    coop = args.coop
 
 # Load the data for each map and difficulty from the json.
 
@@ -139,28 +124,21 @@ assets = json.load(open("assets.json", "r"))
 
 # Set up some basic errors if there are invalid inputs.
 
-if difficulty and (map == None):  # Cannot have a difficulty without a map
-    parser.error("--difficulty requires --map.")
-if variation and (difficulty == None):  # Cannot have a variation without a difficulty
-    parser.error("--variation requires --difficulty.")
-if coop and (map == None):
-    parser.error("--coop requires --map.")  # Cannot have Co-Op without a map
+if difficulty and (terrain == None):  # Cannot have a difficulty without a terrain
+    parser.error("--difficulty requires --terrain.")
+if map and (terrain == None):  # Cannot have a map without a terrain
+    parser.error("--map requires --terrain.")
 
 # For map and variation, fuzzywuzzy will check if the closest match in the list has a score of lower than 75.
 # If it does, it will return an error.
 
-if fuzzy_error(map, list(assets["maps"].keys()), 75):
-    parser.error("invalid map.")
+if fuzzy_error(terrain, list(assets["terrains"].keys()), 75):
+    parser.error("invalid terrain.")
+    if fuzzy_error(map, list(assets["terrains"][terrain]["maps"].keys()), 75):
+        parser.error("invalid map.")
 if difficulty:
     if difficulty not in list(assets["difficulties"].keys()):
         parser.error("invalid difficulty.")
-    if fuzzy_error(
-        variation, list(assets["difficulties"][difficulty]["variations"].keys()), 75
-    ):
-        parser.error("invalid variation.")
-if coop:
-    if not (1 <= coop[0] <= 4):
-        parser.error("invalid co-op player count.")
 
 
 # Setting up the rich presence.

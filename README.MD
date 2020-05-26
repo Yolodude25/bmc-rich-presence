@@ -1,30 +1,26 @@
-# Bloons TD 6 Pseudo-Rich Presence
+# Bloons Monkey City Pseudo-Rich Presence
 
 **This rich presence will not work by itself.**
 
-Unfortunately, BTD6 does not have an easy way to find what map you are playing. This "Pseudo-Rich Presence" will allow you to pass arguments for your current state and have that display on your profile.
+Unfortunately, BMC does not have an easy way to find what map you are playing. This "Pseudo-Rich Presence" will allow you to pass arguments for your current state and have that display on your profile.
 
 ## Installation
 
 First, clone the repository.
 
 ```cmd
-git clone https://www.github.com/yolodude25/btd6-rich-presence
+git clone https://www.github.com/yolodude25/bmc-rich-presence
 ```
 
 Then, install the required modules
 
 ```cmd
-cd btd6-rich-presence
+cd bmc-rich-presence
 ```
 
 ```cmd
 pip install -r requirements.txt
 ```
-
-If `python-Levenshtein` causes an error, download [Microsoft C++ Build Tools](https://visualstudio.microsoft.com/visual-cpp-build-tools).
-
-Alternatively, you can ignore it and just run the script, but it will just show a warning when running it.
 
 ## Usage
 
@@ -36,17 +32,33 @@ To exit the program just close the python script.
 
 ## Arguments
 
-### `-m, --map`
+### `-t, --terrain`
 
-Map you are playing.
-
-#### Available Values
-
-List of all maps can be found in [`assets.json`](assets.json)
+Terrain you are playing on.
 
 #### Notes
 
 This argument uses fuzzy search, and you can type approximate map names and if they are close enough, it will recognize them.
+
+#### Available Values
+
+List of all terrains can be found in [`assets.json`](assets.json)
+
+### `-m, --map`
+
+Map you are playing on.
+
+#### Notes
+
+Cannot be used without `--terrain` being set.
+
+If `--terrain` is set but `--map` is not, it will select a random map from the terrain as the image.
+
+This argument uses fuzzy search, and you can type approximate map names and if they are close enough, it will recognize them.
+
+#### Available Values
+
+List of all terrains can be found in [`assets.json`](assets.json)
 
 ### `-d, --difficulty`
 
@@ -54,39 +66,13 @@ Difficulty you are playing at.
 
 #### Available Values
 
-`easy`, `medium`, `hard`
+`1`, `2`, `3`, `4`, `5`, `6`
+
+`trivial`, `easy`, `medium`, `hard`, `very hard`, `impoppable`
 
 #### Notes
 
-Cannot be used without `--map` being set.
-
-### `-v, --variation`
-
-Difficulty variation.
-
-#### Available Values
-
-List of all variations can be found in [`assets.json`](/assets.json).
-
-The variation must be available for the selected difficulty.
-
-#### Notes
-
-Cannot be used without `--difficulty` being set.
-
-This argument uses fuzzy search, and you can type approximate variation names and if they are close enough, it will recognize them.
-
-### `-c, --coop`
-
-Number of players in your Co-Op game.
-
-#### Available Values
-
-`1`, `2`, `3`, `4`
-
-#### Notes
-
-Cannot be used without `--map` being set.
+Cannot be used without `--terrain` being set.
 
 ## Config
 
@@ -94,73 +80,60 @@ The [config](config.ini.example) allows you to change what is displayed on your 
 
 ### Available Values
 
-- `{map_image}`: Image key of map. (e.g. "monkey_meadow")
-- `{map_hf}`: Name of map. (e.g. "Monkey Meadow")
+- `{terrain_hf}`: Name of terrain (e.g. "Lake")
+- `{map_image}`: Image key of map. (e.g. "lake_blade")
+- `{map_hf}`: Name of map. (e.g. "Blade")
+- `{difficulty_dots}`: Number of dots for the difficulty. (e.g. "2")
 - `{difficulty_hf}`: Name of difficulty (e.g. "Easy")
-- `{variation_image}`: Difficulty variation key of map. (e.g. "deflation")
-- `{variation_hf}`: Name of difficulty variation (e.g. "Deflation")
+- `{icon}`: Icon of the app.
 
-### Rich Presence
-
-#### `client-id`
+### `client-id`
 
 The client id of the Discord Application. Don't modify this unless you are using custom assets and know what you are doing.
 
-### Normal
+### Other Headers
 
-Rich Presence when "map" and "difficulty" are set.
-
-### No Difficulty
-
-Rich Presence when only "map" is set.
-
-### Co-Op
-
-State when "coop" is set.
-
-### No Map
-
-State when nothing is set.
+The rich presence will show the selected values when the situation in the header is used in the arguments.
 
 ## Examples
 
-### Monkey Meadow (Medium - Apopalypse)
+### River - Doubleback (Hard)
 
 #### Command-Line Arguments
 
 ```cmd
-python presence.py -m "Monkey Meadow" -d Medium -v Apopalypse
+python presence.py -t river -m doubleback -d hard
 ```
 
 #### Rich Presence
 
-![Monkey Meadow - Apopalypse](assets/screenshots/monkey_meadow_apopalypse.png)
+![River - Doubleback (Hard)](river_doubleback_hard.png)
 
-### Cubism (Hard - Standard) (Co-Op)
+### Mountain - Sun
 
 #### Command-Line Arguments
 
 ```cmd
-python presence.py -m Cubism -d Hard -c 3
+python presence.py -t mountain -m sun
 ```
 
 #### Rich Presence
 
-![Cubism (Hard - Standard) (Co-Op)](assets/screenshots/cubism_hard_coop.png)
+![Mountain - Sun](assets/screenshots/mountain_sun.png)
 
-### #Ouch
+### Jungle
 
 #### Command-Line Arguments
 
 ```cmd
-python presence.py -m #Ouch
+python presence.py -t jungle
 ```
 
 #### Rich Presence
 
-![#Ouch](assets/screenshots/ouch.png)
+![Jungle](assets/screenshots/jungle.png)
 
-### In Menu
+### Viewing City
 
 #### Command-Line Arguments
 
@@ -170,4 +143,4 @@ python presence.py
 
 #### Rich Presence
 
-![In Menu](assets/screenshots/in_menu.png)
+![Viewing City](assets/screenshots/viewing_city.png)

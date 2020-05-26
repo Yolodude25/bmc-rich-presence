@@ -133,8 +133,8 @@ if map and (terrain == None):  # Cannot have a map without a terrain
 
 if fuzzy_error(terrain, list(assets["terrains"].keys()), 75):
     parser.error("invalid terrain.")
-    if fuzzy_error(map, list(assets["terrains"][terrain]["maps"].keys()), 75):
-        parser.error("invalid map.")
+if fuzzy_error(map, list(assets["terrains"][terrain]["maps"].keys()), 75):
+    parser.error("invalid map.")
 if difficulty:
     if difficulty not in list(assets["difficulties"].keys()):
         parser.error("invalid difficulty.")

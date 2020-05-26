@@ -5,7 +5,7 @@ client_id=712088548278403123
 [Normal]
 
 large_image={map_image}
-large_text={map_hf}
+large_text={terrain_hf} - {map_hf}
 small_image={variation_image}
 small_text={difficulty_hf} - {variation_hf}
 details={map_hf} ({difficulty_hf})
@@ -20,15 +20,11 @@ small_text=
 details={map_hf}
 state=In Game
 
-[Co-Op]
-
-state=In Co-Op Game
-
 [No Map]
 
 large_image={icon}
-large_text=Bloons TD 6
+large_text=Bloons Monkey City
 small_image=
 small_text=
 details=
-state=In Menu
+state=In City

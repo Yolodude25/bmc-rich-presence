@@ -1,142 +1,353 @@
 {
-    "maps": {
-        "adoras temple": {
-            "name_hf": "Adoras Temple",
-            "image": "adoras_temple"
-        },
-        "alpine run": { "name_hf": "Alpine Run", "image": "alpine_run" },
-        "another brick": {
-            "name_hf": "Another Brick",
-            "image": "another_brick"
-        },
-        "bloody puddles": {
-            "name_hf": "Bloody Puddles",
-            "image": "bloody_puddles"
-        },
-        "candy falls": { "name_hf": "Candy Falls", "image": "candy_falls" },
-        "cargo": { "name_hf": "Cargo", "image": "cargo" },
-        "carved": { "name_hf": "Carved", "image": "carved" },
-        "chutes": { "name_hf": "Chutes", "image": "chutes" },
-        "cornfields": { "name_hf": "Cornfields", "image": "cornfields" },
-        "cracked": { "name_hf": "Cracked", "image": "cracked" },
-        "cubism": { "name_hf": "Cubism", "image": "cubism" },
-        "dark castle": { "name_hf": "Dark Castle", "image": "dark_castle" },
-        "downstream": { "name_hf": "Downstream", "image": "downstream" },
-        "end of the road": {
-            "name_hf": "End Of The Road",
-            "image": "end_of_the_road"
-        },
-        "firing range": { "name_hf": "Firing Range", "image": "firing_range" },
-        "four circles": { "name_hf": "Four Circles", "image": "four_circles" },
-        "frozen over": { "name_hf": "Frozen Over", "image": "frozen_over" },
-        "geared": { "name_hf": "Geared", "image": "geared" },
-        "haunted": { "name_hf": "Haunted", "image": "haunted" },
-        "hedge": { "name_hf": "Hedge", "image": "hedge" },
-        "high finance": { "name_hf": "High Finance", "image": "high_finance" },
-        "infernal": { "name_hf": "Infernal", "image": "infernal" },
-        "in the loop": { "name_hf": "In The Loop", "image": "in_the_loop" },
-        "karts n darts": {
-            "name_hf": "Karts N Darts",
-            "image": "karts_n_darts"
-        },
-        "logs": { "name_hf": "Logs", "image": "logs" },
-        "monkey meadow": {
-            "name_hf": "Monkey Meadow",
-            "image": "monkey_meadow"
-        },
-        "moon landing": { "name_hf": "Moon Landing", "image": "moon_landing" },
-        "muddy puddles": {
-            "name_hf": "Muddy Puddles",
-            "image": "muddy_puddles"
-        },
-        "off the coast": {
-            "name_hf": "Off The Coast",
-            "image": "off_the_coast"
-        },
-        "ouch": { "name_hf": "#Ouch", "image": "ouch" },
-        "park path": { "name_hf": "Park Path", "image": "park_path" },
-        "pats pond": { "name_hf": "Pats Pond", "image": "pats_pond" },
-        "peninsula": { "name_hf": "Peninsula", "image": "peninsula" },
-        "quad": { "name_hf": "Quad", "image": "quad" },
-        "rake": { "name_hf": "Rake", "image": "rake" },
-        "spice islands": {
-            "name_hf": "Spice Islands",
-            "image": "spice_islands"
-        },
-        "spillway": { "name_hf": "Spillway", "image": "spillway" },
-        "spring spring": {
-            "name_hf": "Spring Spring",
-            "image": "spring_spring"
-        },
-        "streambed": { "name_hf": "Streambed", "image": "streambed" },
-        "town center": { "name_hf": "Town Center", "image": "town_center" },
-        "tree stump": { "name_hf": "Tree Stump", "image": "tree_stump" },
-        "underground": { "name_hf": "Underground", "image": "underground" },
-        "winter park": { "name_hf": "Winter Park", "image": "winter_park" },
-        "workshop": { "name_hf": "Workshop", "image": "workshop" }
-    },
     "difficulties": {
+        "1": {
+            "name_hf": "Trivial",
+            "dots": "1",
+            "image": "1_trivial"
+        },
+        "2": {
+            "name_hf": "Easy",
+            "dots": "2",
+            "image": "2_easy"
+        },
+        "3": {
+            "name_hf": "Medium",
+            "dots": "3",
+            "image": "3_medium"
+        },
+        "4": {
+            "name_hf": "Hard",
+            "dots": "4",
+            "image": "4_hard"
+        },
+        "5": {
+            "name_hf": "Very Hard",
+            "dots": "5",
+            "image": "5_very_hard"
+        },
+        "6": {
+            "name_hf": "Impoppable",
+            "dots": "6",
+            "image": "6_impoppable"
+        },
+        "trivial": {
+            "name_hf": "Trivial",
+            "dots": "1",
+            "image": "1_trivial"
+        },
         "easy": {
             "name_hf": "Easy",
-            "variations": {
-                "deflation": {
-                    "name_hf": "Deflation",
-                    "image": "easy_deflation"
-                },
-                "primary monkeys only": {
-                    "name_hf": "Primary Monkeys Only",
-                    "image": "easy_primary"
-                },
-                "standard": { "name_hf": "Standard", "image": "easy_standard" },
-                "sandbox": { "name_hf": "Sandbox", "image": "sandbox" }
-            }
+            "dots": "2",
+            "image": "2_easy"
         },
         "medium": {
             "name_hf": "Medium",
-            "variations": {
-                "apopalypse": {
-                    "name_hf": "Apopalypse",
-                    "image": "medium_apopalypse"
-                },
-                "military monkeys only": {
-                    "name_hf": "Military Monkeys Only",
-                    "image": "medium_military"
-                },
-                "reverse": { "name_hf": "Reverse", "image": "medium_reverse" },
-                "standard": {
-                    "name_hf": "Standard",
-                    "image": "medium_standard"
-                },
-                "sandbox": { "name_hf": "Sandbox", "image": "sandbox" }
-            }
+            "dots": "3",
+            "image": "3_medium"
         },
         "hard": {
             "name_hf": "Hard",
-            "variations": {
-                "alternate bloons rounds": {
-                    "name_hf": "Alternate Bloons Rounds",
-                    "image": "hard_alternate"
+            "dots": "4",
+            "image": "4_hard"
+        },
+        "very hard": {
+            "name_hf": "Very Hard",
+            "dots": "5",
+            "image": "5_very_hard"
+        },
+        "impoppable": {
+            "name_hf": "Impoppable",
+            "dots": "6",
+            "image": "6_impoppable"
+        }
+    },
+    "terrains": {
+        "cave": {
+            "maps": { "cave": { "name_hf": "Cave", "image": "cave_cave" } },
+            "name_hf": "Cave"
+        },
+        "desert": {
+            "maps": {
+                "arrow": { "name_hf": "Arrow", "image": "desert_arrow" },
+                "hammer": { "name_hf": "Hammer", "image": "desert_hammer" },
+                "hourglass": {
+                    "name_hf": "Hourglass",
+                    "image": "desert_hourglass"
                 },
-                "chimps": { "name_hf": "C.H.I.M.P.S.", "image": "hard_chimps" },
-                "double hp moabs": {
-                    "name_hf": "Double HP MOABs",
-                    "image": "hard_doublehpmoab"
+                "ladder": { "name_hf": "Ladder", "image": "desert_ladder" },
+                "oasis": { "name_hf": "Oasis", "image": "desert_oasis" },
+                "paperclips": {
+                    "name_hf": "Paperclips",
+                    "image": "desert_paperclips"
                 },
-                "half cash": {
-                    "name_hf": "Half Cash",
-                    "image": "hard_halfcash"
+                "stairs": { "name_hf": "Stairs", "image": "desert_stairs" }
+            },
+            "name_hf": "Desert"
+        },
+        "forest": {
+            "maps": {
+                "bulbs": { "name_hf": "Bulbs", "image": "forest_bulbs" },
+                "easter basket": {
+                    "name_hf": "Easter Basket",
+                    "image": "forest_easter_basket"
                 },
-                "impoppable": {
-                    "name_hf": "Impoppable",
-                    "image": "hard_impoppable"
+                "hexagonal": {
+                    "name_hf": "Hexagonal",
+                    "image": "forest_hexagonal"
                 },
-                "magic monkeys only": {
-                    "name_hf": "Magic Monkeys Only",
-                    "image": "hard_magic"
+                "jigsaw": { "name_hf": "Jigsaw", "image": "forest_jigsaw" },
+                "junior": { "name_hf": "Junior", "image": "forest_junior" },
+                "pop": { "name_hf": "Pop", "image": "forest_pop" },
+                "waves": { "name_hf": "Waves", "image": "forest_waves" }
+            },
+            "name_hf": "Forest"
+        },
+        "grass": {
+            "maps": {
+                "clover": { "name_hf": "Clover", "image": "grass_clover" },
+                "flower": { "name_hf": "Flower", "image": "grass_flower" },
+                "magnet": { "name_hf": "Magnet", "image": "grass_magnet" },
+                "pistol": { "name_hf": "Pistol", "image": "grass_pistol" },
+                "square park": {
+                    "name_hf": "Square Park",
+                    "image": "grass_square_park"
                 },
-                "standard": { "name_hf": "Standard", "image": "hard_standard" },
-                "sandbox": { "name_hf": "Sandbox", "image": "sandbox" }
-            }
+                "tunnels": {
+                    "name_hf": "Tunnels",
+                    "image": "grass_tunnels"
+                },
+                "tutorial": {
+                    "name_hf": "Tutorial",
+                    "image": "grass_tutorial"
+                },
+                "uo": { "name_hf": "Uo", "image": "grass_uo" },
+                "weight": { "name_hf": "Weight", "image": "grass_weight" }
+            },
+            "name_hf": "Grass"
+        },
+        "heavyforest": {
+            "maps": {
+                "branches": {
+                    "name_hf": "Branches",
+                    "image": "heavyforest_branches"
+                },
+                "butterfly": {
+                    "name_hf": "Butterfly",
+                    "image": "heavyforest_butterfly"
+                },
+                "circle": {
+                    "name_hf": "Circle",
+                    "image": "heavyforest_circle"
+                },
+                "handcuffs": {
+                    "name_hf": "Handcuffs",
+                    "image": "heavyforest_handcuffs"
+                },
+                "hook": { "name_hf": "Hook", "image": "heavyforest_hook" },
+                "rose": { "name_hf": "Rose", "image": "heavyforest_rose" },
+                "talon": { "name_hf": "Talon", "image": "heavyforest_talon" }
+            },
+            "name_hf": "Heavyforest"
+        },
+        "hills": {
+            "maps": {
+                "detour": { "name_hf": "Detour", "image": "hills_detour" },
+                "dip": { "name_hf": "Dip", "image": "hills_dip" },
+                "mustache": {
+                    "name_hf": "Mustache",
+                    "image": "hills_mustache"
+                },
+                "seashell": {
+                    "name_hf": "Seashell",
+                    "image": "hills_seashell"
+                },
+                "subway": { "name_hf": "Subway", "image": "hills_subway" }
+            },
+            "name_hf": "Hills"
+        },
+        "jungle": {
+            "maps": {
+                "face": { "name_hf": "Face", "image": "jungle_face" },
+                "nose and mouth": {
+                    "name_hf": "Nose And Mouth",
+                    "image": "jungle_nose_and_mouth"
+                },
+                "test tube": {
+                    "name_hf": "Test Tube",
+                    "image": "jungle_test_tube"
+                },
+                "totem poles": {
+                    "name_hf": "Totem Poles",
+                    "image": "jungle_totem_poles"
+                },
+                "turkey": { "name_hf": "Turkey", "image": "jungle_turkey" }
+            },
+            "name_hf": "Jungle"
+        },
+        "lake": {
+            "maps": {
+                "bad mirror": {
+                    "name_hf": "Bad Mirror",
+                    "image": "lake_bad_mirror"
+                },
+                "blade": { "name_hf": "Blade", "image": "lake_blade" },
+                "infinity": {
+                    "name_hf": "Infinity",
+                    "image": "lake_infinity"
+                },
+                "lakeside": {
+                    "name_hf": "Lakeside",
+                    "image": "lake_lakeside"
+                },
+                "loop knot": {
+                    "name_hf": "Loop Knot",
+                    "image": "lake_loop_knot"
+                }
+            },
+            "name_hf": "Lake"
+        },
+        "mountain": {
+            "maps": {
+                "monkeys tail": {
+                    "name_hf": "Monkeys Tail",
+                    "image": "mountain_monkeys_tail"
+                },
+                "squiggle mountain": {
+                    "name_hf": "Squiggle Mountain",
+                    "image": "mountain_squiggle_mountain"
+                },
+                "star mountain": {
+                    "name_hf": "Star Mountain",
+                    "image": "mountain_star_mountain"
+                },
+                "sun": { "name_hf": "Sun", "image": "mountain_sun" },
+                "treble clef": {
+                    "name_hf": "Treble Clef",
+                    "image": "mountain_treble_clef"
+                },
+                "tripeaks": {
+                    "name_hf": "Tripeaks",
+                    "image": "mountain_tripeaks"
+                },
+                "waves": { "name_hf": "Waves", "image": "mountain_waves" }
+            },
+            "name_hf": "Mountain"
+        },
+        "river": {
+            "maps": {
+                "doubleback": {
+                    "name_hf": "Doubleback",
+                    "image": "river_doubleback"
+                },
+                "loop river": {
+                    "name_hf": "Loop River",
+                    "image": "river_loop_river"
+                },
+                "meanderiver": {
+                    "name_hf": "Meanderiver",
+                    "image": "river_meanderiver"
+                },
+                "river python": {
+                    "name_hf": "River Python",
+                    "image": "river_river_python"
+                },
+                "wavy river": {
+                    "name_hf": "Wavy River",
+                    "image": "river_wavy_river"
+                }
+            },
+            "name_hf": "River"
+        },
+        "snow": {
+            "maps": {
+                "checkerboard": {
+                    "name_hf": "Checkerboard",
+                    "image": "snow_checkerboard"
+                },
+                "pickaxe": { "name_hf": "Pickaxe", "image": "snow_pickaxe" },
+                "pretzel": { "name_hf": "Pretzel", "image": "snow_pretzel" },
+                "shoe": { "name_hf": "Shoe", "image": "snow_shoe" },
+                "snow stairs": {
+                    "name_hf": "Snow Stairs",
+                    "image": "snow_snow_stairs"
+                }
+            },
+            "name_hf": "Snow"
+        },
+        "special mission": {
+            "maps": {
+                "bloonprint hideout": {
+                    "name_hf": "Bloonprint Hideout",
+                    "image": "specialmission_bloonprint_hideout"
+                },
+                "consecrated ground": {
+                    "name_hf": "Consecrated Ground",
+                    "image": "specialmission_consecrated_ground"
+                },
+                "crash site": {
+                    "name_hf": "Crash Site",
+                    "image": "specialmission_crash_site"
+                },
+                "engineer rescue": {
+                    "name_hf": "Engineer Rescue",
+                    "image": "specialmission_engineer_rescue"
+                },
+                "forgotten garden": {
+                    "name_hf": "Forgotten Garden",
+                    "image": "specialmission_forgotten_garden"
+                },
+                "glacier": {
+                    "name_hf": "Glacier",
+                    "image": "specialmission_glacier"
+                },
+                "moab graveyard": {
+                    "name_hf": "Moab Graveyard",
+                    "image": "specialmission_moab_graveyard"
+                },
+                "phase crystal": {
+                    "name_hf": "Phase Crystal",
+                    "image": "specialmission_phase_crystal"
+                },
+                "shipwreck": {
+                    "name_hf": "Shipwreck",
+                    "image": "specialmission_shipwreck"
+                },
+                "sticky sap plant": {
+                    "name_hf": "Sticky Sap Plant",
+                    "image": "specialmission_sticky_sap_plant"
+                },
+                "submarine alliance": {
+                    "name_hf": "Submarine Alliance",
+                    "image": "specialmission_submarine_alliance"
+                },
+                "tranquil glade": {
+                    "name_hf": "Tranquil Glade",
+                    "image": "specialmission_tranquil_glade"
+                },
+                "wattle trees": {
+                    "name_hf": "Wattle Trees",
+                    "image": "specialmission_wattle_trees"
+                }
+            },
+            "name_hf": "Special Mission"
+        },
+        "volcano": {
+            "maps": {
+                "dna": { "name_hf": "DNA", "image": "volcano_dna" },
+                "fire crown": {
+                    "name_hf": "Fire Crown",
+                    "image": "volcano_fire_crown"
+                },
+                "keyhole": {
+                    "name_hf": "Keyhole",
+                    "image": "volcano_keyhole"
+                },
+                "squigglecano": {
+                    "name_hf": "Squigglecano",
+                    "image": "volcano_squigglecano"
+                }
+            },
+            "name_hf": "Volcano"
         }
     }
 }

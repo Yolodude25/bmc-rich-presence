@@ -1,6 +1,5 @@
-import time, argparse, json, configparser, pprint, random
-from fuzzywuzzy import fuzz
-from fuzzywuzzy import process
+import time, argparse, json, configparser, pprint
+from rapidfuzz import process, fuzz
 from pypresence import Presence
 
 # Functions

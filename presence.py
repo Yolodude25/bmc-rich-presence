@@ -15,10 +15,7 @@ def lower_if_exists(lie_argument):
 
 def fuzzy_error(fe_string, fe_list, fe_thresh):
     if fe_string != None:
-        if process.extractOne(fe_string, fe_list)[1] < fe_thresh:
-            return True
-        else:
-            return False
+        return process.extractOne(fe_string, fe_list, score_cutoff=fe_thresh) is None
 
 
 def presence_gen():
@@ -131,10 +128,12 @@ if map and (terrain == None):  # Cannot have a map without a terrain
 # For map and variation, fuzzywuzzy will check if the closest match in the list has a score of lower than 75.
 # If it does, it will return an error.
 
-if fuzzy_error(terrain, list(assets["terrains"].keys()), 75):
-    parser.error("invalid terrain.")
-if fuzzy_error(map, list(assets["terrains"][terrain]["maps"].keys()), 75):
-    parser.error("invalid map.")
+if terrain:
+    if fuzzy_error(terrain, list(assets["terrains"].keys()), 75):
+        parser.error("invalid terrain.")
+    terrain_mapcheck = process.extractOne(terrain, list(assets["terrains"].keys()))[0]
+    if fuzzy_error(map, list(assets["terrains"][terrain_mapcheck]["maps"].keys()), 75):
+        parser.error("invalid map.")
 if difficulty:
     if difficulty not in list(assets["difficulties"].keys()):
         parser.error("invalid difficulty.")

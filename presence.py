@@ -1,4 +1,4 @@
-import time, argparse, json, configparser, pprint
+import time, argparse, json, configparser, pprint, random
 from rapidfuzz import process, fuzz
 from pypresence import Presence
 
